@@ -1,0 +1,15 @@
+﻿<Window x:Class="GeverProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GeverProject"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="Welcome To GEVER VPN" HorizontalAlignment="Left" Height="43" Margin="265,43,0,0" VerticalAlignment="Top" Width="270" FontSize="24"/>
+        <Button x:Name="Use" Content="Start Using VPNS" HorizontalAlignment="Left" Height="66" Margin="265,129,0,0" VerticalAlignment="Top" Width="270" FontSize="22" Click="Button_Click_1"/>
+        <Button Content="Add VPNS" HorizontalAlignment="Left" Height="63" Margin="265,222,0,0" VerticalAlignment="Top" Width="270" FontSize="22" Click="Button_Click"/>
+
+    </Grid>
+</Window>
