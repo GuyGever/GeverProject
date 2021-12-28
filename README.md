@@ -1,5 +1,5 @@
 # GeverProject
-The Project For The Cyber Finals in OpenVPN
+The Project For The Cyber Finals
 
 Trello List (On School's Mail):
 https://trello.com/b/Q2ZPc2oH/gever
