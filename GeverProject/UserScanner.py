@@ -1,30 +1,25 @@
+import pwd, grp
 import subprocess
+from sys import stdout
+from typing import Text
 
-all_secure = True
+print("Would You Rather The Full User Scan")
+c = input("Y/N ? ")
 
-print("User Scanner\n\nTool For Scanning Users And Their Security\n")
+if (c.lower() == 'y'): 
+    for p in pwd.getpwall():
+        print (p[0], grp.getgrgid(p[3])[0])
+elif (c.lower() == 'n'):
+    l = subprocess.run(["users"],stdout=subprocess.PIPE,text=True).stdout.split()
+    for u in l:
+        print(u)
 
-lusers = subprocess.run(["users"],stdout=subprocess.PIPE,text=True).stdout.splitlines()
+print("\nUsers Log: (since two days ago)\n")
+logs = subprocess.run(["last","--since","-2days"],stdout=subprocess.PIPE,text=True).stdout.split("\n")
+for log in logs:
+    print(log)
 
-print("Users: (If You See An Unfamiliar User, That May Be A Security Breach)")
-for u in lusers:
-    print(u)
-
-lines = subprocess.run(["cat", "/etc/shadow"],stdout=subprocess.PIPE,text=True).stdout.splitlines()
-
-print("\n")
-
-for line in lines:
-    l = line.split(":")
-    if l[0] in lusers:
-        print(l[0] + " : " + l[1])
-        if l[1] == "":
-            all_secure = False
-            print("User Does Not Have A Password!!\n")
-
-print("\n")
-
-if all_secure:
-    print("All Users Are Secure And Have Passwords")
-else:
-    print("Some Users Do Not Have Passwords!!")
+print("\nBad Login Attempts: (since two days ago)\n")
+logs = subprocess.run(["lastb","--since","-2days"],stdout=subprocess.PIPE,text=True).stdout.split("\n")
+for log in logs:
+    print(log)
